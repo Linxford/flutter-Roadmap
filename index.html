@@ -1175,6 +1175,87 @@
                 margin: 0;
             }
         }
+
+        .support-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateY(150%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .support-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification-content {
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+        }
+
+        .notification-content img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notification-content p {
+            color: var(--text);
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .notification-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .notify-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .notify-btn.support {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .notify-btn.close {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .support-notification {
+                left: 50%;
+                transform: translateX(-50%) translateY(150%);
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .support-notification.show {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -2058,6 +2139,54 @@
             loadPaystackScript().catch(error => {
                 console.warn('Failed to preload Paystack:', error);
             });
+        });
+
+        function showTimedSupportAlert() {
+            // Check if alert has already been shown in this session
+            if (sessionStorage.getItem('supportAlertShown')) {
+                return;
+            }
+
+            setTimeout(() => {
+                // Create and show a floating notification
+                const notification = document.createElement('div');
+                notification.className = 'support-notification';
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <img src="https://img.icons8.com/fluency/48/donate.png" width="24" alt="support"/>
+                        <p>Enjoying FlutterCraft? Consider supporting the project! 💙</p>
+                        <div class="notification-buttons">
+                            <button onclick="showSupportModal(); removeNotification()" class="notify-btn support">Support Now</button>
+                            <button onclick="removeNotification()" class="notify-btn close">Maybe Later</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+
+                // Add animation class after a small delay
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 100);
+
+                // Mark as shown for this session
+                sessionStorage.setItem('supportAlertShown', 'true');
+            }, 60000); // Show after 1 minute
+        }
+
+        function removeNotification() {
+            const notification = document.querySelector('.support-notification');
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }
+        }
+
+        // Add this to your init function or DOMContentLoaded event
+        document.addEventListener('DOMContentLoaded', () => {
+            // ... existing init code ...
+            showTimedSupportAlert();
         });
     </script>
 
