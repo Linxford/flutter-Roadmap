@@ -370,7 +370,10 @@
             background: var(--card);
             padding: 30px;
             border-radius: 15px;
-            max-width: 500px;
+            /* max-width: 500px; */
+            max-width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
             width: 90%;
             border: 1px solid var(--primary);
             box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
@@ -1051,6 +1054,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 15px;
+            padding: 10px 0;
         }
 
         .social-btn {
@@ -1189,7 +1193,7 @@
                         Browse through curated Flutter learning resources
                     </li>
                     <li>
-                        <img src="https://img.icons8.com/fluency/48/filter-and-sort.png" width="20" alt="filter"/> 
+                        <img src="https://img.icons8.com/fluency/48/filter.png" width="20" alt="filter"/> 
                         Filter resources by type and search for specific topics
                     </li>
                     <li>
@@ -1441,12 +1445,12 @@
             </div>
 
             <div class="installation-steps arch">
-                <h3>���� Arch Linux Installation</h3>
+                <h3>🐧 Arch Linux Installation</h3>
                 <ol>
                     <li>
                         <span class="step-title">📥 Install from AUR</span>
                         <div class="code-block">
-                            <code>yay -S flutter</code>
+                            <code>yay -S flutter or pacman -S flutter or paru -S flutter</code>
                         </div>
                     </li>
                     <li>
