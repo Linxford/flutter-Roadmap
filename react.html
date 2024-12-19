@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- Keep the same meta tags and CSP, just update the title -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com https://js.paystack.co; frame-src 'self' https://www.youtube.com https://trytako.com https://paystack.com https://standard.paystack.co https://checkout.paystack.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Learning Journey</title>
+    <!-- Keep the same styles but update colors -->
+    <style>
+        /* Keep all existing styles but update the theme colors */
+        :root {
+            --primary: #61dafb; /* React blue */
+            --dark: #20232a; /* React dark */
+            --card: #282c34; /* React background */
+            --text: #ffffff;
+            --text-secondary: #8892b0;
+        }
+
+        /* Update header gradient */
+        header {
+            background: linear-gradient(45deg, #20232a, #282c34);
+        }
+
+        /* Rest of the existing styles remain the same */
+    </style>
+    <link rel="stylesheet" href="shared-nav.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚛️ React Learning Journey</h1>
+            <p>Your interactive guide to mastering React development</p>
+        </header>
+        <nav class="platform-nav">
+            <a href="index.html" class="platform-btn">
+                <img src="https://img.icons8.com/color/48/flutter.png" width="20" alt="flutter"/> Flutter
+            </a>
+            <a href="react.html" class="platform-btn active">
+                <img src="https://img.icons8.com/color/48/react-native.png" width="20" alt="react"/> React
+            </a>
+            <a href="react-native.html" class="platform-btn">
+                <img src="https://img.icons8.com/color/48/react-native.png" width="20" alt="react-native"/> React Native
+            </a>
+        </nav>
+
+        <!-- Add after the header -->
+        <div class="platform-features">
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/code.png" width="24" alt="code"/>
+                    Component-Based
+                </h3>
+                <p>Build encapsulated components that manage their own state</p>
+            </div>
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/speed.png" width="24" alt="speed"/>
+                    Virtual DOM
+                </h3>
+                <p>Efficient rendering with Virtual DOM implementation</p>
+            </div>
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/direction.png" width="24" alt="direction"/>
+                    Unidirectional Flow
+                </h3>
+                <p>One-way data flow for predictable state management</p>
+            </div>
+        </div>
+
+        <!-- Add installation guide -->
+        <div class="install-steps">
+            <h2>Quick Start Guide</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Create New App</h3>
+                    <code>npx create-react-app my-app</code>
+                </div>
+            </div>
+            <!-- Add more steps -->
+        </div>
+
+        <!-- Keep the same structure but update content for React -->
+    </div>
+
+    <script>
+        const resources = [
+            {
+                title: "React Documentation",
+                description: "Official React documentation with interactive examples and comprehensive guides",
+                type: "documentation",
+                link: "https://react.dev",
+                difficulty: "beginner"
+            },
+            {
+                title: "React 18 Features",
+                description: "Learn about the latest features in React 18 including automatic batching and transitions",
+                type: "documentation",
+                link: "https://react.dev/blog/2022/03/29/react-v18",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Hooks Mastery",
+                description: "Deep dive into React Hooks with practical examples and best practices",
+                type: "tutorial",
+                link: "https://react.dev/reference/react/hooks",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Performance",
+                description: "Optimize React applications with advanced performance techniques",
+                type: "documentation",
+                link: "https://react.dev/learn/render-and-commit",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Router 6",
+                description: "Master client-side routing in React with the latest React Router",
+                type: "tutorial",
+                link: "https://reactrouter.com/en/main",
+                difficulty: "intermediate"
+            },
+            {
+                title: "Redux Toolkit",
+                description: "Modern state management in React with Redux Toolkit",
+                type: "documentation",
+                link: "https://redux-toolkit.js.org/",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Testing Library",
+                description: "Write maintainable tests for your React components",
+                type: "tutorial",
+                link: "https://testing-library.com/docs/react-testing-library/intro/",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Server Components",
+                description: "Build faster web apps by reducing the client-side JavaScript",
+                type: "documentation",
+                link: "https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components",
+                difficulty: "advanced"
+            },
+            {
+                title: "Next.js 14",
+                description: "Build full-stack React applications with the latest Next.js features",
+                type: "course",
+                link: "https://nextjs.org/learn",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Design Patterns",
+                description: "Common design patterns and best practices in React development",
+                type: "documentation",
+                link: "https://www.patterns.dev/react",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Query",
+                description: "Powerful data synchronization for React applications",
+                type: "documentation",
+                link: "https://tanstack.com/query/latest",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Suspense",
+                description: "Learn to use React Suspense for data fetching and code splitting",
+                type: "tutorial",
+                link: "https://react.dev/reference/react/Suspense",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Security",
+                description: "Best practices for securing React applications",
+                type: "documentation",
+                link: "https://reactjs.org/docs/security.html",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Performance Monitoring",
+                description: "Tools and techniques for monitoring React app performance",
+                type: "tool",
+                link: "https://reactjs.org/docs/perf.html",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Component Patterns",
+                description: "Advanced component patterns and composition techniques",
+                type: "tutorial",
+                link: "https://www.patterns.dev/react/",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Forms with Formik",
+                description: "Build and validate forms efficiently with Formik",
+                type: "tutorial",
+                link: "https://formik.org/docs/overview",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React State Management Comparison",
+                description: "Compare different state management solutions in React",
+                type: "documentation",
+                link: "https://react.dev/learn/managing-state",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React DevTools",
+                description: "Essential browser extensions for React development",
+                type: "tool",
+                link: "https://react.dev/learn/react-developer-tools",
+                difficulty: "beginner"
+            },
+            {
+                title: "Create React App",
+                description: "Set up a modern React web app with one command",
+                type: "tool",
+                link: "https://create-react-app.dev/",
+                difficulty: "beginner"
+            }
+            // Add more React-specific resources...
+        ];
+
+        // Keep the same functionality but update content for React
+    </script>
+</body></html> 

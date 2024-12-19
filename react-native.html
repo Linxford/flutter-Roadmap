@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- Same structure as above but with React Native specific content -->
+    <title>React Native Learning Journey</title>
+    <style>
+        :root {
+            --primary: #61dafb; /* React Native blue */
+            --dark: #1a1a1a; /* Darker background */
+            --card: #282828;
+            --text: #ffffff;
+            --text-secondary: #8892b0;
+        }
+
+        header {
+            background: linear-gradient(45deg, #1a1a1a, #282828);
+        }
+        /* Rest of the styles remain the same */
+    </style>
+    <link rel="stylesheet" href="shared-nav.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 React Native Learning Journey</h1>
+            <p>Your interactive guide to mastering React Native development</p>
+        </header>
+        <nav class="platform-nav">
+            <a href="index.html" class="platform-btn">
+                <img src="https://img.icons8.com/color/48/flutter.png" width="20" alt="flutter"/> Flutter
+            </a>
+            <a href="react.html" class="platform-btn">
+                <img src="https://img.icons8.com/color/48/react-native.png" width="20" alt="react"/> React
+            </a>
+            <a href="react-native.html" class="platform-btn active">
+                <img src="https://img.icons8.com/color/48/react-native.png" width="20" alt="react-native"/> React Native
+            </a>
+        </nav>
+
+        <!-- Add after the header -->
+        <div class="platform-features">
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/mobile.png" width="24" alt="mobile"/>
+                    Cross-Platform
+                </h3>
+                <p>Build native apps for iOS and Android from a single codebase</p>
+            </div>
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/performance.png" width="24" alt="performance"/>
+                    Native Performance
+                </h3>
+                <p>True native rendering for optimal performance</p>
+            </div>
+            <div class="feature-card">
+                <h3>
+                    <img src="https://img.icons8.com/fluency/48/module.png" width="24" alt="module"/>
+                    Hot Reloading
+                </h3>
+                <p>Instant feedback during development</p>
+            </div>
+        </div>
+
+        <!-- Add installation guide -->
+        <div class="install-steps">
+            <h2>Quick Start Guide</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Install Dependencies</h3>
+                    <code>npm install -g react-native-cli</code>
+                </div>
+            </div>
+            <!-- Add more steps -->
+        </div>
+
+        <!-- Same structure with React Native content -->
+    </div>
+
+    <script>
+        const resources = [
+            {
+                title: "React Native Documentation",
+                description: "Official React Native documentation with platform-specific guides",
+                type: "documentation",
+                link: "https://reactnative.dev",
+                difficulty: "beginner"
+            },
+            {
+                title: "React Native Architecture",
+                description: "Understanding the new architecture in React Native",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/next/the-new-architecture/landing-page",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Native Navigation",
+                description: "Master navigation patterns with React Navigation 6",
+                type: "tutorial",
+                link: "https://reactnavigation.org/",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native Performance",
+                description: "Optimize React Native apps for better performance",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/performance",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Native Testing",
+                description: "Testing strategies for React Native applications",
+                type: "tutorial",
+                link: "https://reactnative.dev/docs/testing-overview",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native CLI",
+                description: "Set up and manage React Native projects with the CLI",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/environment-setup",
+                difficulty: "beginner"
+            },
+            {
+                title: "React Native Animations",
+                description: "Create smooth animations with the Animated API",
+                type: "tutorial",
+                link: "https://reactnative.dev/docs/animated",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native Gesture Handler",
+                description: "Handle complex touch and gesture interactions",
+                type: "documentation",
+                link: "https://docs.swmansion.com/react-native-gesture-handler/",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native Reanimated",
+                description: "Create fluid animations with native performance",
+                type: "tutorial",
+                link: "https://docs.swmansion.com/react-native-reanimated/",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Native Maps",
+                description: "Implement maps and location features in your apps",
+                type: "tutorial",
+                link: "https://github.com/react-native-maps/react-native-maps",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native Storage",
+                description: "Data persistence and storage solutions",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/asyncstorage",
+                difficulty: "intermediate"
+            },
+            {
+                title: "React Native UI Libraries",
+                description: "Popular UI component libraries for React Native",
+                type: "tool",
+                link: "https://reactnative.directory/?search=ui",
+                difficulty: "beginner"
+            },
+            {
+                title: "React Native Security",
+                description: "Security best practices for React Native apps",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/security",
+                difficulty: "advanced"
+            },
+            {
+                title: "React Native Performance",
+                description: "Advanced performance optimization techniques",
+                type: "tutorial",
+                link: "https://reactnative.dev/docs/performance",
+                difficulty: "advanced"
+            },
+            {
+                title: "Expo",
+                description: "Build and deploy React Native apps quickly with Expo",
+                type: "tool",
+                link: "https://expo.dev/",
+                difficulty: "beginner"
+            },
+            {
+                title: "React Native CLI Setup",
+                description: "Set up your development environment for React Native",
+                type: "documentation",
+                link: "https://reactnative.dev/docs/environment-setup",
+                difficulty: "beginner"
+            }
+            // Add more React Native specific resources...
+        ];
+
+        // Keep the same functionality
+    </script>
+</body></html> 
