@@ -1,0 +1,52 @@
+.main-header {
+    background: var(--card);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 5px;
+}
+
+.search-box {
+    position: relative;
+    min-width: 200px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 35px 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    background: var(--dark);
+    color: var(--text);
+}
+
+.search-box img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+} 
