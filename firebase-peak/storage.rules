@@ -1,0 +1,64 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*')
+        && request.resource.size < 5 * 1024 * 1024; // 5MB
+    }
+
+    function isValidDocument() {
+      return request.resource.contentType.matches('application/pdf|application/msword|application/vnd.openxmlformats-officedocument.*')
+        && request.resource.size < 10 * 1024 * 1024; // 10MB
+    }
+
+    // Admin avatars
+    match /avatars/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if isAuthenticated()
+        && request.auth.uid == userId
+        && isValidImage();
+    }
+
+    // Resource materials
+    match /resources/{resourceId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() &&
+        (isValidImage() || isValidDocument());
+    }
+
+    // Feedback attachments
+    match /feedback/{feedbackId}/{fileName} {
+      allow read: if isAdmin();
+      allow create: if true && isValidImage();
+      allow update, delete: if isAdmin();
+    }
+
+    // User uploads
+    match /users/{userId}/{fileName} {
+      allow read: if isAuthenticated() &&
+        (request.auth.uid == userId || isAdmin());
+      allow write: if isAuthenticated()
+        && request.auth.uid == userId
+        && isValidImage();
+    }
+
+    // Temporary uploads
+    match /temp/{fileName} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated()
+        && (isValidImage() || isValidDocument())
+        && request.resource.size < 5 * 1024 * 1024;
+      allow delete: if isAuthenticated();
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.resource-card {
+  background: var(--card);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid transparent;
+  cursor: pointer;
+  animation: cardEntry 0.5s ease backwards;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}

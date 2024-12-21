@@ -1,0 +1,42 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.icon.search-icon {
+  color: var(--text-secondary);
+}
+
+.icon.select-icon {
+  color: var(--text-secondary);
+}
+
+.icon.action-icon {
+  color: inherit;
+}
+
+/* Add animations */
+.icon {
+  transition: transform 0.3s ease;
+}
+
+button:hover .icon,
+a:hover .icon {
+  transform: scale(1.1);
+}
+
+.resource-item:hover .icon {
+  animation: iconBounce 0.5s ease;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}

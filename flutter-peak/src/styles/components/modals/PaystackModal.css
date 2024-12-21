@@ -1,0 +1,121 @@
+.payment-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #233554;
+  background: var(--dark);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+.support-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--primary);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transform: translateY(150%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.support-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.notification-content {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.notification-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.notify-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.notify-btn.support {
+  background: var(--primary);
+  color: var(--dark);
+}
+
+.notify-btn.close {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.notify-btn:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .support-notification {
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .support-notification.show {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.modal-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.modal-btn:disabled:hover {
+  box-shadow: none;
+}

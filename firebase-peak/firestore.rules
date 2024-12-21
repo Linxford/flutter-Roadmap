@@ -1,0 +1,93 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidResource() {
+      let resource = request.resource.data;
+      return resource.title is string &&
+        resource.title.size() > 0 &&
+        resource.description is string &&
+        resource.type in ['documentation', 'tutorial', 'course'] &&
+        resource.difficulty in ['beginner', 'intermediate', 'advanced'];
+    }
+
+    // Admin collection
+    match /admins/{userId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.role == 'admin'
+        && request.resource.data.email == request.auth.token.email;
+      allow update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    // Feedback collection
+    match /feedback/{feedbackId} {
+      allow read: if isAdmin();
+      allow create: if true;  // Anyone can submit feedback
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+
+      // Feedback responses subcollection
+      match /responses/{responseId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+
+    // Resources collection
+    match /resources/{resourceId} {
+      allow read: if true;  // Public access to resources
+      allow create: if isAdmin() && isValidResource();
+      allow update: if isAdmin() && isValidResource();
+      allow delete: if isAdmin();
+
+      // Resource comments subcollection
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if isAuthenticated();
+        allow update, delete: if isAuthenticated() &&
+          (isAdmin() || resource.data.userId == request.auth.uid);
+      }
+    }
+
+    // Progress collection
+    match /progress/{userId} {
+      allow read: if true;
+      allow create: if isAuthenticated() && isOwner(userId);
+      allow update: if isAuthenticated() &&
+        (isOwner(userId) || isAdmin());
+      allow delete: if isAdmin();
+
+      // Progress history subcollection
+      match /history/{historyId} {
+        allow read: if isAuthenticated() &&
+          (isOwner(userId) || isAdmin());
+        allow write: if isAuthenticated() && isOwner(userId);
+      }
+    }
+
+    // User settings collection
+    match /settings/{userId} {
+      allow read: if isAuthenticated() &&
+        (isOwner(userId) || isAdmin());
+      allow write: if isAuthenticated() && isOwner(userId);
+    }
+  }
+}

@@ -1,0 +1,239 @@
+.profile-settings {
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-settings h2 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-settings h2::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.profile-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--dark);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+.avatar-section input {
+  width: 100%;
+  text-align: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.form-group label {
+  color: var(--primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  background: var(--dark);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.password-section {
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 12px;
+  background: var(--dark);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.password-section h3 {
+  color: var(--primary);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.password-section h3::before {
+  content: '🔒';
+  font-size: 1.2em;
+}
+
+.form-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.save-btn {
+  padding: 12px 30px;
+  background: var(--primary);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.save-btn::before {
+  content: '💾';
+  font-size: 1.1em;
+}
+
+.save-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Loading state */
+.save-btn.loading {
+  position: relative;
+  padding-right: 40px;
+}
+
+.save-btn.loading::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--dark);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .profile-settings {
+    padding: 20px;
+  }
+
+  .profile-header {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .avatar-section {
+    margin-bottom: 20px;
+  }
+
+  .password-section {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .save-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .profile-settings {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-header,
+  .password-section {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}

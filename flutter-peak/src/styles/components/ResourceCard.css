@@ -1,0 +1,201 @@
+.resource-card {
+  background: var(--card);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  cursor: pointer;
+  animation: cardEntry 0.5s ease backwards;
+  overflow: hidden;
+}
+
+.resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(100, 255, 218, 0.03),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+.resource-card:hover::before {
+  transform: translateX(100%);
+}
+
+.resource-type {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--dark);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  color: var(--primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover .resource-type {
+  background: var(--primary);
+  color: var(--dark);
+}
+
+.resource-title {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  padding-right: 100px;
+  transition: all 0.3s ease;
+}
+
+.resource-description {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.resource-link {
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.resource-link:hover {
+  gap: 12px;
+  text-shadow: 0 0 8px rgba(100, 255, 218, 0.3);
+}
+
+.completion-toggle {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.checkbox-wrapper:hover {
+  color: var(--primary);
+}
+
+.custom-checkbox {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  background: var(--dark);
+}
+
+.custom-checkbox:checked {
+  background: var(--primary);
+  animation: checkmark 0.3s ease forwards;
+}
+
+.custom-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  color: var(--dark);
+  font-size: 16px;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-checkbox:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+}
+
+.difficulty {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  margin-left: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.beginner { background: #4caf50; color: white; }
+.intermediate { background: #ff9800; color: white; }
+.advanced { background: #f44336; color: white; }
+
+@keyframes checkmark {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cardEntry {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .resource-card {
+    padding: 20px;
+  }
+
+  .resource-title {
+    font-size: 1.1em;
+    padding-right: 80px;
+  }
+
+  .difficulty {
+    margin-left: 8px;
+    padding: 3px 10px;
+  }
+
+  .completion-toggle {
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+
+  .custom-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+}

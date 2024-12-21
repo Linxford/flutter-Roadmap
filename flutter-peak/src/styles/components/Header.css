@@ -1,0 +1,116 @@
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(45deg, #1a237e, #0d47a1);
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(100, 255, 218, 0.1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation: rotate 20s linear infinite;
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: var(--primary);
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+header p {
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 15px 45px 15px 20px;
+  border: 2px solid #233554;
+  border-radius: 25px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.15);
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+.product-hunt-badge {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.ph-badge {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.ph-badge:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.ph-badge img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: auto;
+}
+
+/* Add styles for install link */
+.install-link {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.install-link:hover {
+  text-decoration: underline;
+  transform: translateX(2px);
+}
